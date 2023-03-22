@@ -9,14 +9,14 @@ import entities.enums.OrderStatus;
 
 public class Order {
 	private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-	
+
 	private Date moments;
 	private OrderStatus status;
-	
+
 	private Client client;
-	
+
 	private List<OrderItem> items = new ArrayList<OrderItem>();
-	
+
 	public Order() {
 	}
 
@@ -53,18 +53,21 @@ public class Order {
 
 	public void addItem(OrderItem item) {
 		items.add(item);
-		
+
 	}
+
 	public void removeItem(OrderItem item) {
 		items.remove(item);
 	}
+
 	public double total() {
 		double sum = 0.0;
-		for(OrderItem it: items) {
+		for (OrderItem it : items) {
 			sum += it.subTotal();
 		}
 		return sum;
 	}
+
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
@@ -81,5 +84,5 @@ public class Order {
 		sb.append("Total price: $");
 		sb.append(String.format("%.2f", total()));
 		return sb.toString();
-	}	
+	}
 }
